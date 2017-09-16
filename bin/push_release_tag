@@ -1,0 +1,20 @@
+#!bin/bash
+
+# add 9h (jst)
+RELEASE_DATE=`date +"%Y%m%d%H%M%S" -d '+9 hour'`
+
+echo "Release version $RELEASE_DATE..."
+git config --global user.email "release@ci"
+git config --global user.name "Circle CI Release master"
+git checkout ./
+
+git reset develop
+git checkout develop
+git pull
+
+git checkout master
+git merge origin/develop
+git push origin master
+
+git tag -a v$RELEASE_DATE -m "Relase version $RELEASE_DATE"
+git push origin v$RELEASE_DATE
