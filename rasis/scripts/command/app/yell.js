@@ -1,7 +1,7 @@
 const rand = require('../../helper/random.js');
 const musicData = require('../../data/musicData.js');
 
-const callReplies = [
+const yellReplies = [
   "大丈夫！ぜったい大丈夫にゃ！",
   "これで元気だすにゃ！",
   "ボクがついてるにゃ！"
@@ -13,10 +13,8 @@ module.exports = {
   hear : (controller) => {
     controller.hears(listen,['direct_message','direct_mention','mention'],(bot,msg) => {
       yellMusics = musicData.getYellMusic();
-      console.log(musicData);
-      console.log(yellMusics);
       musicInfo = yellMusics[rand.getRandomArbitary(0, yellMusics.length)]
-      yell = `${callReplies[rand.getRandomArbitary(0, callReplies.length)]}\n
+      yell = `${yellReplies[rand.getRandomArbitary(0, yellReplies.length)]}\n
       ${musicInfo.title}/${musicInfo.artist}\n
       ${musicInfo.url}`;
       bot.reply(msg, yell);
