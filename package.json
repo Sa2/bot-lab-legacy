@@ -4,7 +4,7 @@
   "description": "",
   "main": "rasis/bot.js",
   "scripts": {
-    "start": "node ./",
+    "start": "./bin/bot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sa2",
